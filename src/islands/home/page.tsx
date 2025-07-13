@@ -1,19 +1,14 @@
-import { columns, Issue } from "./columns"
-import { DataTable } from "./data-table"
-import issues from "@/data/issues.json"
-
-
-function getData(): Issue[] {
-  // Fetch data from your API here.
-  return issues
-}
+import { Header } from "@/islands/header/page";
+import { Table } from "@/islands/table/page";
 
 export function Home() {
-  const data = getData()
 
-  return (
-    <div className="container mx-auto py-10">
-      <DataTable columns={columns} data={data} />
-    </div>
-  )
+    return (
+        <>
+            <Header/>
+            <Table/>
+        </>
+        
+    )
+
 }
