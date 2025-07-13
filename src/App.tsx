@@ -1,14 +1,13 @@
-import { ThemeProvider } from "@/components/theme/theme-provider"
-import { Home } from '@/islands/home/page'
+import { ThemeProvider } from '@/components/theme/theme-provider';
+import { Home } from '@/islands/home/page';
 function App() {
-
   return (
     <>
       <ThemeProvider>
-        <Home/>
+        <Home />
       </ThemeProvider>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
