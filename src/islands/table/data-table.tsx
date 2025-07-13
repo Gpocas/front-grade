@@ -74,7 +74,7 @@ export function DataTable<TData, TValue>({
       </div>
       <div className='rounded-md border'>
         <Table>
-          <TableHeader>
+          <TableHeader className='bg-zinc-200/70 dark:bg-zinc-900/75'>
             {table.getHeaderGroups().map(headerGroup => (
               <TableRow key={headerGroup.id}>
                 {headerGroup.headers.map(header => {
@@ -98,6 +98,7 @@ export function DataTable<TData, TValue>({
                 <TableRow
                   key={row.id}
                   data-state={row.getIsSelected() && 'selected'}
+                  className='transition-colors hover:bg-zinc-100 dark:hover:bg-zinc-900'
                 >
                   {row.getVisibleCells().map(cell => (
                     <TableCell key={cell.id}>
