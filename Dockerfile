@@ -1,20 +1,13 @@
-# Use a imagem oficial do Bun
-FROM oven/bun:1.2.18-slim
-
-# Crie o diretório de trabalho
+# Etapa 1: Construir o aplicativo
+FROM oven/bun:1.2.18-slim AS build
 WORKDIR /app
-
-# Copie os arquivos do projeto
-COPY . .
-
-# Instale as dependências
+COPY package.json bun.lock ./
 RUN bun install
-
-# Build do projeto Vite
+COPY . .
 RUN bun run build
 
-# Exponha a porta padrão do Vite (mude se necessário)
-EXPOSE 4173
-
-# Comando para rodar o servidor de preview do Vite
-CMD ["bun", "run", "preview", "--host"]
+# Etapa 2: Servir com NGINX
+FROM nginx:1.28-alpine
+COPY --from=build /app/dist /usr/share/nginx/html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
