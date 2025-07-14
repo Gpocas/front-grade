@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { columns, Issue } from './columns';
 import { DataTable } from './data-table';
 
@@ -7,9 +8,13 @@ async function getData(): Promise<Issue[]> {
   return data.data
 }
 
-const data = await getData()
-
 export function Table() {
+  
+  const [data, setData] = useState<Issue[]>([]);
+  useEffect(() => {
+    getData().then(setData);
+  }, []);
+
   return (
     <div className='container mx-auto py-10'>
       <DataTable columns={columns} data={data} />
