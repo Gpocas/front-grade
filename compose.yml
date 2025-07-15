@@ -11,9 +11,6 @@ services:
       - certbot-certs:/etc/letsencrypt
     environment:
       - NODE_ENV=production
-    networks:
-      - shared-net
-
   certbot:
     image: certbot/certbot:latest
     volumes:
@@ -27,13 +24,7 @@ services:
       - vite-prod
     environment:
       - TZ=America/Sao_Paulo
-    networks:
-      - shared-net
-
 
 volumes:
   certbot-certs:
-
-networks:
-  shared-net:
-    external: true
+  
