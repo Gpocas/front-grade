@@ -3,13 +3,12 @@ import { columns, Issue } from './columns';
 import { DataTable } from './data-table';
 
 async function getData(): Promise<Issue[]> {
-  const content = await fetch('http://localhost:3000/issue/all')
-  const data = await content.json()
-  return data.data
+  const content = await fetch('http://localhost:3000/issue/all');
+  const data = await content.json();
+  return data.data;
 }
 
 export function Table() {
-  
   const [data, setData] = useState<Issue[]>([]);
   useEffect(() => {
     getData().then(setData);
