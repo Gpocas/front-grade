@@ -11,11 +11,11 @@ async function getData(): Promise<Issue[]> {
 export function Table() {
   const [data, setData] = useState<Issue[]>([]);
   useEffect(() => {
-    getData().then(setData);
+    getData().then(setData);  
   }, []);
 
   return (
-    <div className='container mx-auto py-10'>
+    <div className='container mx-auto py-10 sm:px-10'>
       <DataTable columns={columns} data={data} />
     </div>
   );
